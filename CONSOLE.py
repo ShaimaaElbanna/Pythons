@@ -1,4 +1,5 @@
 import tkinter as tk
+import board_launch
 
 console = tk.Tk()
 console.geometry("300x200")
@@ -12,6 +13,9 @@ def showAndHide(visiable):
     for i in (settings, menu, startGame):
         i.pack_forget()
     visiable.pack(fill="both", expand= True)
+
+def gameStart():
+    board_launch.main()
 
 menu = tk.Frame(console, bg= "Green")
 
@@ -31,7 +35,7 @@ menu.pack()
 startGame = tk.Frame(console, bg = "Lightblue")
 
 
-start = tk.Button(startGame, text = "Play", width=15, height=2)
+start = tk.Button(startGame, text = "Play", command = lambda: gameStart(), width=15, height=2)
 start.pack(pady = 5, padx = 5)
 lvl = tk.Button(startGame, text = "Difficulty level", width=15, height=2)
 lvl.pack(pady = 5, padx = 5)

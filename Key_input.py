@@ -3,8 +3,8 @@ import pygame
 
 class KeyInput:
 
-    def __init__(self):
-        self.__currentDirection = (1,0)
+    __currentDirection = (1,0)
+    def __init__(self):        
         self.__direction = {
             pygame.K_UP: (0,-1),
             pygame.K_DOWN: (0,1),
