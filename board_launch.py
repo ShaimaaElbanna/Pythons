@@ -1,6 +1,6 @@
 import pygame
-import Key_input
-import snake
+from Key_input import KeyInput 
+from snake import Snake
 from board import Board
 from board_view import BoardView
 
@@ -41,7 +41,8 @@ def main():
     clock = pygame.time.Clock()
     font = pygame.font.Font(None, 28)
 
-
+    key_input = KeyInput()
+    snake = Snake(0, 0)
 
     position = (0, 0)               # possition of test marker
     running = True
@@ -56,10 +57,11 @@ def main():
                     ##checks whether the pressed key is an arrow key. If it is,
                     ##the code moves the marker one cell in that direction and saves its new position. 
                     ## The helper(next marker possitionn) keeps it from moving off the board.
-                elif Key_input.KeyInput.get_direction(event):
-                    Key_input.KeyInput.set_direction(event, event.key)
+                key_input.set_direction(event)
+            snake.set_direction(*key_input.get_direction())
+            print(snake.get_direction())
         #            position = next_marker_position(board, position, DIRECTIONS[event.key])
-                    snake.Snake.set_direction(Key_input.KeyInput.get_direction().x, Key_input.KeyInput.get_direction.y)
+        #snake.Snake.set_direction(Key_input.KeyInput.get_direction().x, Key_input.KeyInput.get_direction.y)
 
         screen.fill((15, 15, 18))
         view.draw(screen)
